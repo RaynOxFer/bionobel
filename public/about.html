@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من نحن - Bionobel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6373450778872852"
+     crossorigin="anonymous"></script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '819694071114025');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=819694071114025&ev=PageView&noscript=1"
+    /></noscript>
+        <!-- End Meta Pixel Code -->
+        <!-- TikTok Pixel Code -->
+        <script>
+        !function (w, d, t) {
+          w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=i+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+          ttq.load('D616CPBC77U70QB7BFIG');
+          ttq.page();
+        }(window, document, 'ttq');
+        </script>
+        <!-- End TikTok Pixel Code -->
+    <style>
+        /* Page Header */
+        .page-hero {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(ellipse 60% 50% at 20% 50%, rgba(90,158,96,0.2) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 80% 20%, rgba(212,168,50,0.15) 0%, transparent 60%);
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: var(--bg-primary);
+            clip-path: ellipse(60% 100% at 50% 100%);
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(36px, 6vw, 60px);
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .page-hero h1 i {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 18px;
+            opacity: 0.82;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 22px;
+            right: 22px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding: 11px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s;
+            z-index: 200;
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,0.25);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.28);
+            transform: translateX(5px);
+        }
+
+        /* About Content */
+        .about-content {
+            padding: 70px 0 80px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .about-section {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 44px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+            border: 1.5px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 4px;
+            background: var(--gradient-brand);
+        }
+
+        .about-section:hover { box-shadow: var(--shadow-md); }
+
+        .about-section h2 {
+            color: var(--green-deep);
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .about-section h2 i {
+            width: 46px;
+            height: 46px;
+            background: var(--gradient-gold);
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a2e1c;
+            font-size: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px rgba(212,168,50,0.35);
+        }
+
+        .about-section p {
+            color: var(--text-secondary);
+            line-height: 2;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .about-section p:last-child { margin-bottom: 0; }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 22px;
+            margin-top: 28px;
+        }
+
+        .value-card {
+            background: var(--cream);
+            padding: 28px 22px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 1.5px solid var(--border-color);
+            transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-brand);
+            transform: scaleX(0);
+            transition: transform 0.35s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--green-mid);
+            background: white;
+        }
+
+        .value-card:hover::after { transform: scaleX(1); }
+
+        .value-card i {
+            font-size: 38px;
+            background: var(--gradient-green);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover i { transform: scale(1.15) rotate(-5deg); }
+
+        .value-card h4 {
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .value-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Product list */
+        .about-section ul {
+            color: var(--text-secondary);
+            line-height: 2.6;
+            padding-right: 10px;
+            list-style: none;
+        }
+
+        .about-section ul li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            transition: background 0.2s;
+            font-size: 15px;
+        }
+
+        .about-section ul li:hover { background: var(--cream); }
+
+        /* Social Section */
+        .social-section {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 28px;
+            border-top: 1.5px solid var(--border-color);
+        }
+
+        .social-section h3 {
+            color: var(--text-primary);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .social-links-about {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .social-links-about a {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .social-links-about a:hover {
+            transform: translateY(-8px) scale(1.12);
+            box-shadow: 0 14px 35px rgba(0,0,0,0.22);
+        }
+
+        .social-links-about .facebook { background: linear-gradient(135deg, #1877f2, #0d65d9); }
+        .social-links-about .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .social-links-about .tiktok { background: linear-gradient(135deg, #010101, #333); }
+
+        /* Contact Info */
+        .contact-info-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 18px;
+            margin-top: 22px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 20px;
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            border: 1.5px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--gold-warm);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-item i {
+            font-size: 22px;
+            color: var(--gold-warm);
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item span {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .about-section { padding: 28px 22px; }
+            .page-hero { padding: 90px 0 60px; }
+            .values-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .values-grid { grid-template-columns: 1fr; }
+            .contact-info-section { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-btn">
+        <i class="fas fa-arrow-right"></i>
+        العودة للمتجر
+    </a>
+    
+    <div class="page-hero">
+        <div class="container page-hero-content">
+            <h1><i class="fas fa-leaf"></i> من نحن</h1>
+            <p>تعرف على Bionobel - البديل الصحي الطبيعي</p>
+        </div>
+    </div>
+    
+    <div class="container about-content">
+        <!-- About Section -->
+        <div class="about-section">
+            <h2><i class="fas fa-store"></i> عن Bionobel</h2>
+            <p>
+                <strong>Bionobel</strong> هو متجر جزائري متخصص في بيع التوابل والأدوية الطبيعية عالية الجودة. 
+                نؤمن بأن الطبيعة هي أفضل مصدر للصحة والجمال، لذلك نحرص على توفير منتجات طبيعية 100% 
+                بدون أي إضافات كيميائية.
+            </p>
+            <p>
+                بدأنا رحلتنا بهدف واحد: تقديم البديل الصحي الطبيعي للعائلات الجزائرية. 
+                نختار منتجاتنا بعناية فائقة من أفضل المصادر الطبيعية لنضمن لكم أعلى جودة بأسعار مناسبة.
+            </p>
+            <p>
+                نوصل منتجاتنا لجميع ولايات الجزائر الـ 69، مع خدمة الدفع عند الاستلام لراحتكم وأمانكم.
+            </p>
+        </div>
+        
+        <!-- Values Section -->
+        <div class="about-section">
+            <h2><i class="fas fa-heart"></i> قيمنا</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-leaf"></i>
+                    <h4>100% طبيعي</h4>
+                    <p>منتجات عضوية وطبيعية بدون مواد كيميائية</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-certificate"></i>
+                    <h4>جودة مضمونة</h4>
+                    <p>نختار أفضل المنتجات من مصادر موثوقة</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h4>صحة العائلة</h4>
+                    <p>نهتم بصحتكم وصحة عائلتكم</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-truck"></i>
+                    <h4>توصيل سريع</h4>
+                    <p>نوصل لجميع ولايات الجزائر</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Products Section -->
+        <div class="about-section">
+            <h2><i class="fas fa-box-open"></i> منتجاتنا</h2>
+            <p>نوفر مجموعة متنوعة من المنتجات الطبيعية:</p>
+            <ul>
+                <li>🍯 <strong>العسل الطبيعي</strong> - عسل نقي 100% من الجبال</li>
+                <li>🌿 <strong>زيت الأركان</strong> - للبشرة والشعر</li>
+                <li>🖤 <strong>زيت الحبة السوداء</strong> - حبة البركة الطبيعية</li>
+                <li>🫒 <strong>زيت الزيتون البكر</strong> - زيت زيتون ممتاز</li>
+                <li>🥥 <strong>زيت جوز الهند</strong> - عضوي ونقي</li>
+                <li>🌹 <strong>ماء الورد</strong> - للعناية بالبشرة</li>
+                <li>🌿 <strong>التوابل الطبيعية</strong> - توابل نقية بدون إضافات</li>
+                <li>🍵 <strong>الأعشاب الطبية</strong> - خلطات طبيعية للصحة</li>
+            </ul>
+        </div>
+        
+        <!-- Contact Section -->
+        <div class="about-section">
+            <h2><i class="fas fa-phone-alt"></i> تواصل معنا</h2>
+            <div class="contact-info-section">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>0550140140</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>درارية، الجزائر</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-truck"></i>
+                    <span>توصيل لـ 69 ولاية</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>الدفع عند الاستلام</span>
+                </div>
+            </div>
+            
+            <div class="social-section">
+                <h3>🌿 تابعونا على مواقع التواصل</h3>
+                <div class="social-links-about">
+                    <a href="https://www.facebook.com/profile.php?id=61578299254849" target="_blank" class="facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/bio_nobel/" target="_blank" class="instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@bio_nobel" target="_blank" class="tiktok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Load theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</body>
+</html>

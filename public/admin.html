@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - Bionobel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #f8f5f0;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-input: #faf8f5;
+            --text-primary: #2c1810;
+            --text-secondary: #6b5344;
+            --border-color: #e8ddd0;
+            --shadow-color: rgba(44, 24, 16, 0.08);
+            --accent: #8b5a2b;
+            --accent-hover: #704620;
+            --accent-light: #d4a574;
+            --gold: #c9a227;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1410;
+            --bg-secondary: #241c16;
+            --bg-card: #2c221a;
+            --bg-input: #352a20;
+            --text-primary: #f5efe8;
+            --text-secondary: #c4b5a5;
+            --border-color: #4a3c30;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            direction: rtl;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Login Page Styles */
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2c1810 0%, #4a3020 50%, #8b5a2b 100%);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23c9a227" opacity="0.1"/></svg>') repeat;
+            background-size: 50px 50px;
+        }
+
+        .login-container {
+            background: linear-gradient(145deg, #fff 0%, #faf5eb 100%);
+            border-radius: 30px;
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            text-align: center;
+            position: relative;
+            border: 3px solid var(--gold);
+        }
+
+        .login-logo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #8b5a2b 0%, #c9a227 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 45px;
+            box-shadow: 0 10px 30px rgba(139, 90, 43, 0.3);
+        }
+
+        .login-title {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5a2b, #c9a227);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+
+        .login-subtitle {
+            color: #6b5344;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .login-tagline {
+            color: #8b5a2b;
+            margin-bottom: 30px;
+            font-size: 12px;
+            padding: 8px 15px;
+            background: rgba(139, 90, 43, 0.1);
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c1810;
+            font-size: 14px;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e8ddd0;
+            border-radius: 15px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: #faf8f5;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: #8b5a2b;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(139, 90, 43, 0.15);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #8b5a2b 0%, #c9a227 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            box-shadow: 0 10px 25px rgba(139, 90, 43, 0.3);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(139, 90, 43, 0.4);
+        }
+
+        .login-error {
+            background: #fef0f0;
+            color: #c00;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+            border: 1px solid #fcc;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e8ddd0;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a.facebook { background: #1877f2; }
+        .social-links a.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .social-links a.tiktok { background: #000; }
+
+        .social-links a:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        .back-to-store {
+            margin-top: 20px;
+            color: #6b5344;
+            font-size: 14px;
+        }
+
+        .back-to-store a {
+            color: #8b5a2b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-to-store a:hover {
+            text-decoration: underline;
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #2c1810 0%, #4a3020 50%, #8b5a2b 100%);
+            color: white;
+            padding: 0px 20px;
+            position: fixed;
+            top: -74px;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            box-shadow: 0 4px 25px rgba(44, 24, 16, 0.3);
+        }
+
+        .admin-header .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .admin-header h1 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+        }
+
+        .admin-header h1 .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #c9a227, #f0d55a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .admin-header a, .admin-header button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 18px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .admin-header a:hover, .admin-header button:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        .btn-orders {
+            background: linear-gradient(135deg, #c9a227, #e6c240) !important;
+            color: #2c1810 !important;
+        }
+
+        .btn-products {
+            background: linear-gradient(135deg, #8b5a2b, #a86e3c) !important;
+        }
+
+        .btn-logout {
+            background: linear-gradient(135deg, #c0392b, #e74c3c) !important;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 90px 15px 30px;
+        }
+
+        /* Tabs */
+        .tabs-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            background: var(--bg-card);
+            padding: 12px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            background: var(--bg-input);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent-light);
+            color: var(--accent);
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            border-color: transparent;
+        }
+
+        .tab-btn .count {
+            background: rgba(255,255,255,0.3);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Storage Info */
+        .storage-info {
+            background: linear-gradient(135deg, rgba(139, 90, 43, 0.1) 0%, rgba(201, 162, 39, 0.1) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .storage-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .storage-header h4 {
+            color: var(--accent);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cleanup-btn {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .cleanup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .storage-bar {
+            height: 20px;
+            background: var(--bg-primary);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .storage-used {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745 0%, #ffc107 50%, #dc3545 100%);
+            background-size: 200% 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .storage-details {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .storage-details span {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .storage-details strong {
+            color: var(--accent);
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+        }
+
+        .stat-card:hover { 
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+        
+        .stat-card i { 
+            font-size: 30px; 
+            margin-bottom: 10px; 
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-card h3 { 
+            font-size: 28px; 
+            margin-bottom: 5px;
+            color: var(--accent);
+        }
+        
+        .stat-card p { 
+            color: var(--text-secondary); 
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Orders */
+        .orders-section {
+            background: var(--bg-card);
+            border-radius: 20px;
+            box-shadow: 0 5px 25px var(--shadow-color);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .orders-header {
+            padding: 18px 25px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--bg-input), var(--bg-card));
+        }
+
+        .orders-header h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            color: var(--accent);
+        }
+
+        .refresh-btn {
+            padding: 10px 22px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .refresh-btn:hover { 
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(139, 90, 43, 0.3);
+        }
+
+        .orders-list {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .order-card {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .order-card:hover { 
+            background: var(--bg-input);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .order-id { 
+            font-weight: 700; 
+            color: var(--accent); 
+            font-size: 16px;
+        }
+        
+        .order-date { 
+            color: var(--text-secondary); 
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .order-status {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-new { background: #e8f4fd; color: #1565c0; }
+        .status-pending { background: #fff8e1; color: #f57c00; }
+        .status-confirmed { background: #e8f5e9; color: #2e7d32; }
+        .status-shipped { background: #e3f2fd; color: #1565c0; }
+        .status-delivered { background: #e8f5e9; color: #1b5e20; }
+        .status-cancelled { background: #ffebee; color: #c62828; }
+
+        .customer-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .customer-info div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .customer-info i { 
+            color: var(--accent); 
+            width: 18px;
+        }
+
+        .order-products {
+            background: var(--bg-input);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            border: 1px solid var(--border-color);
+        }
+
+        .order-products h4 {
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-size: 13px;
+        }
+
+        .order-total {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 18px;
+            margin: 12px 0;
+        }
+
+        .order-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s;
+        }
+
+        .btn-confirm { 
+            background: linear-gradient(135deg, #27ae60, #2ecc71); 
+            color: white; 
+        }
+        .btn-ship { 
+            background: linear-gradient(135deg, #3498db, #5dade2); 
+            color: white; 
+        }
+        .btn-deliver { 
+            background: linear-gradient(135deg, #27ae60, #58d68d); 
+            color: white; 
+        }
+        .btn-cancel { 
+            background: linear-gradient(135deg, #e74c3c, #ec7063); 
+            color: white; 
+        }
+        .btn-delete { 
+            background: linear-gradient(135deg, #7f8c8d, #95a5a6); 
+            color: white; 
+        }
+
+        .action-btn:hover { 
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .empty-orders {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-orders i { 
+            font-size: 60px; 
+            margin-bottom: 20px; 
+            opacity: 0.3;
+            color: var(--accent);
+        }
+
+        /* Products Section */
+        .add-product-btn {
+            padding: 14px 28px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(139, 90, 43, 0.3);
+        }
+
+        .add-product-btn:hover { 
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(139, 90, 43, 0.4);
+        }
+
+        .products-grid-admin {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card-admin {
+            background: var(--bg-card);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .product-card-admin:hover { 
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px var(--shadow-color);
+        }
+
+        .product-card-admin img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-card-admin .content {
+            padding: 20px;
+        }
+
+        .product-card-admin h3 {
+            font-size: 17px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .product-card-admin .price {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .product-card-admin .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .product-card-admin .edit-btn,
+        .product-card-admin .delete-btn,
+        .product-card-admin .link-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.3s;
+        }
+
+        .product-card-admin .edit-btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+        }
+
+        .product-card-admin .delete-btn {
+            background: linear-gradient(135deg, #e74c3c, #ec7063);
+            color: white;
+        }
+
+        .product-card-admin .link-btn {
+            background: linear-gradient(135deg, #2c1810, var(--accent));
+            color: white;
+        }
+
+        .product-card-admin .edit-btn:hover,
+        .product-card-admin .delete-btn:hover,
+        .product-card-admin .link-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 24, 16, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal {
+            background: var(--bg-card);
+            border-radius: 25px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 2px solid var(--border-color);
+        }
+
+        .modal-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            color: white;
+            border-radius: 23px 23px 0 0;
+        }
+
+        .modal-header h3 {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-modal {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .modal-body { padding: 25px; }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            background: var(--bg-input);
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(139, 90, 43, 0.1);
+        }
+
+        .form-group textarea { 
+            min-height: 100px; 
+            resize: vertical; 
+        }
+
+        .image-preview {
+            width: 100%;
+            height: 160px;
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            overflow: hidden;
+            background: var(--bg-input);
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .image-preview span {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(139, 90, 43, 0.3);
+        }
+
+        .submit-btn:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(139, 90, 43, 0.4);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: 16px 30px;
+            border-radius: 15px;
+            color: white;
+            font-weight: 600;
+            z-index: 9999;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast.success { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+        .toast.error { background: linear-gradient(135deg, #e74c3c, #ec7063); }
+
+        /* Phone number */
+        .phone-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 50;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .phone-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .admin-header {  top: -106px;  }
+            .admin-header h1 { font-size: 16px; }
+            .admin-header h1 .logo-icon { width: 35px; height: 35px; font-size: 16px; }
+            .admin-header a, .admin-header button { padding: 8px 14px; font-size: 11px; }
+            .container { padding-top: 110px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .customer-info { grid-template-columns: 1fr; }
+            .login-container { padding: 35px 25px; }
+            .login-title { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-page" id="loginPage">
+        <div class="login-container">
+            <div class="login-logo">🌿</div>
+            <h1 class="login-title">Bionobel</h1>
+            <p class="login-subtitle">لوحة تحكم المدير</p>
+            <p class="login-tagline">البديل الصحي لبيع التوابل والأدوية الطبيعية</p>
+            
+            <div class="login-error" id="loginError">
+                اسم المستخدم أو كلمة المرور غير صحيحة
+            </div>
+            
+            <form class="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>اسم المستخدم</label>
+                    <input type="text" id="loginUsername" required placeholder="أدخل اسم المستخدم">
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" id="loginPassword" required placeholder="أدخل كلمة المرور">
+                </div>
+                <div class="form-group" style="display: flex; justify-content: center; margin: 20px 0;">
+                    <div class="g-recaptcha" data-sitekey="6Lc7hkgsAAAAAJkuhgcocse01AiGV3eMelsfqLZK"></div>
+                </div>
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    تسجيل الدخول
+                </button>
+            </form>
+            
+            <p class="back-to-store">
+                <a href="/"><i class="fas fa-arrow-right"></i> العودة للمتجر</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <header class="admin-header">
+            <div class="container">
+                <h1>
+                    <span class="logo-icon">🌿</span>
+                    Bionobel - لوحة التحكم
+                    <span style="background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-right: 10px; display: inline-flex; align-items: center; gap: 5px;">
+                        <i class="fas fa-users"></i>
+                        <span id="activeAdmins">1</span> نشط
+                    </span>
+                </h1>
+                <div class="header-buttons">
+                    <button onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                        <span>الوضع</span>
+                    </button>
+                    <a href="/">
+                        <i class="fas fa-store"></i>
+                        <span>المتجر</span>
+                    </a>
+                    <button class="btn-logout" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>خروج</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <!-- Tabs Navigation -->
+            <div class="tabs-nav main-tabs">
+                <button class="tab-btn active" onclick="switchTab('orders')">
+                    <i class="fas fa-shopping-bag"></i>
+                    الطلبات
+                    <span class="count" id="totalOrdersCount">0</span>
+                </button>
+                <button class="tab-btn" onclick="switchTab('leads')">
+                    <i class="fas fa-user-plus"></i>
+                    العملاء المحتملون
+                    <span class="count" id="totalLeadsCount">0</span>
+                </button>
+                <button class="tab-btn" onclick="switchTab('products')">
+                    <i class="fas fa-leaf"></i>
+                    المنتجات
+                </button>
+            </div>
+
+            <!-- Orders Tab -->
+            <div class="tab-content active" id="ordersTab">
+                <!-- Storage Info -->
+                <div class="storage-info" id="storageInfo">
+                    <div class="storage-header">
+                        <h4><i class="fas fa-database"></i> حالة التخزين</h4>
+                        <button class="cleanup-btn" onclick="cleanupOldOrders()">
+                            <i class="fas fa-broom"></i>
+                            تنظيف الطلبات القديمة
+                        </button>
+                    </div>
+                    <div class="storage-bar">
+                        <div class="storage-used" id="storageUsedBar" style="width: 0%"></div>
+                    </div>
+                    <div class="storage-details">
+                        <span><i class="fas fa-hdd"></i> المستخدم: <strong id="storageUsed">0</strong> MB</span>
+                        <span><i class="fas fa-check-circle"></i> المتاح: <strong id="storageFree">512</strong> MB</span>
+                        <span><i class="fas fa-percentage"></i> النسبة: <strong id="storagePercent">0</strong>%</span>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3 id="totalOrders">0</h3>
+                        <p>إجمالي الطلبات</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <h3 id="pendingOrders">0</h3>
+                        <p>في الانتظار</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3 id="confirmedOrders">0</h3>
+                        <p>مؤكدة</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-truck"></i>
+                        <h3 id="shippedOrders">0</h3>
+                        <p>في الطريق</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-box"></i>
+                        <h3 id="deliveredOrders">0</h3>
+                        <p>تم التسليم</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-coins"></i>
+                        <h3 id="totalRevenue">0</h3>
+                        <p>الإيرادات (د.ج)</p>
+                    </div>
+                </div>
+
+                <!-- Order Status Tabs -->
+                <div class="tabs-nav order-tabs">
+                    <button class="tab-btn active" onclick="filterOrders('all')">
+                        <i class="fas fa-list"></i>
+                        الكل
+                    </button>
+                    <button class="tab-btn" onclick="filterOrders('pending')">
+                        <i class="fas fa-clock"></i>
+                        في الانتظار
+                    </button>
+                    <button class="tab-btn" onclick="filterOrders('accepted')">
+                        <i class="fas fa-check"></i>
+                        مقبولة
+                    </button>
+                    <button class="tab-btn" onclick="filterOrders('shipped')">
+                        <i class="fas fa-truck"></i>
+                        في الطريق
+                    </button>
+                    <button class="tab-btn" onclick="filterOrders('delivered')">
+                        <i class="fas fa-box"></i>
+                        تم التسليم
+                    </button>
+                    <button class="tab-btn" onclick="filterOrders('rejected')">
+                        <i class="fas fa-times"></i>
+                        مرفوضة
+                    </button>
+                </div>
+
+                <!-- Orders Section -->
+                <div class="orders-section">
+                    <div class="orders-header">
+                        <h2><i class="fas fa-clipboard-list"></i> قائمة الطلبات</h2>
+                        <button class="refresh-btn" onclick="loadOrders()">
+                            <i class="fas fa-sync-alt"></i>
+                            تحديث
+                        </button>
+                    </div>
+                    <div class="orders-list" id="ordersList">
+                        <div class="empty-orders">
+                            <i class="fas fa-inbox"></i>
+                            <p>جاري تحميل الطلبات...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leads Tab -->
+            <div class="tab-content" id="leadsTab">
+                <div class="orders-section">
+                    <div class="orders-header">
+                        <h2><i class="fas fa-user-plus"></i> العملاء المحتملون</h2>
+                        <button class="refresh-btn" onclick="loadLeads()">
+                            <i class="fas fa-sync-alt"></i>
+                            تحديث
+                        </button>
+                    </div>
+                    <div class="leads-list" id="leadsList">
+                        <div class="empty-orders">
+                            <i class="fas fa-inbox"></i>
+                            <p>جاري تحميل العملاء...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Tab -->
+            <div class="tab-content" id="productsTab">
+                <button class="add-product-btn" onclick="openProductModal()">
+                    <i class="fas fa-plus"></i>
+                    إضافة منتج جديد
+                </button>
+                <div class="products-grid-admin" id="productsGrid">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-leaf"></i> <span id="modalTitle">إضافة منتج</span></h3>
+                <button class="close-modal" onclick="closeProductModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm" onsubmit="saveProduct(event)">
+                    <input type="hidden" id="productId">
+                    <div class="form-group">
+                        <label>اسم المنتج *</label>
+                        <input type="text" id="productName" required placeholder="مثال: عسل طبيعي">
+                    </div>
+                    <div class="form-group">
+                        <label>السعر (د.ج) *</label>
+                        <input type="number" id="productPrice" required placeholder="2500">
+                    </div>
+                    <div class="form-group">
+                        <label>السعر القديم (د.ج) - اختياري</label>
+                        <input type="number" id="productOldPrice" placeholder="3000">
+                    </div>
+                    <div class="form-group">
+                        <label>الشارة (Badge)</label>
+                        <input type="text" id="productBadge" placeholder="مثال: جديد، عرض خاص">
+                    </div>
+                    <div class="form-group">
+                        <label>صورة الخلفية (Background Image)</label>
+                        <input type="file" id="productBackgroundImage" accept="image/*" onchange="previewBackgroundImage(event)">
+                        <div class="image-preview" id="backgroundImagePreview" style="margin-top: 10px;">
+                            <span>معاينة صورة الخلفية</span>
+                        </div>
+                        <button type="button" onclick="clearBackgroundImage()" style="margin-top: 5px; background: none; border: none; color: red; cursor: pointer; text-decoration: underline;">مسح الصورة</button>
+                    </div>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox" id="productIsWeighted" onchange="toggleWeightFields()" style="width: 18px; height: 18px; margin: 0;">
+                            <span>يباع بالوزن (Sold by weight)</span>
+                        </label>
+                    </div>
+                    <div id="weightFields" style="display: none; padding: 15px; margin-bottom: 15px; background: var(--bg-input); border-radius: 12px; border: 1px solid var(--border-color);">
+                        <div class="form-group">
+                            <label>السعر للكيلوغرام الواحد (Price per kg) *</label>
+                            <input type="number" id="productPricePerKg" step="0.01" placeholder="مثال: 5000">
+                        </div>
+                        <div class="form-group">
+                            <label>الأوزان المقترحة بالغرام (Recommended weights)</label>
+                            <input type="text" id="productRecommendedWeights" placeholder="مثال: 100, 250, 500, 1000">
+                            <small style="color: var(--text-secondary); display: block; margin-top: 5px;">افصل بين الأرقام بفاصلة (,)</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>وصف المنتج</label>
+                        <textarea id="productDescription" placeholder="وصف مختصر للمنتج..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>صورة المنتج</label>
+                        <input type="file" id="productImage" accept="image/*" onchange="previewImage(event)">
+                        <div class="image-preview" id="imagePreview">
+                            <span>معاينة الصورة</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-save"></i>
+                        حفظ المنتج
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <script>
+        // Admin token storage
+        let adminToken = null;
+
+        let orders = [];
+        let products = [];
+        let currentFilter = 'all';
+        let editingProductId = null;
+
+        // Check if logged in on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check for existing token in sessionStorage
+            adminToken = sessionStorage.getItem('adminToken');
+            
+            if (adminToken) {
+                showAdminPanel();
+            } else {
+                showLoginPage();
+            }
+        });
+
+        // Handle login - Now uses server authentication
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            // Check reCAPTCHA
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                document.getElementById('loginError').textContent = 'يرجى التحقق من أنك لست روبوت';
+                document.getElementById('loginError').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('loginError').classList.remove('show');
+                    document.getElementById('loginError').textContent = 'اسم المستخدم أو كلمة المرور غير صحيحة';
+                }, 3000);
+                return;
+            }
+            
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            try {
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    adminToken = data.token;
+                    sessionStorage.setItem('adminToken', adminToken);
+                    showAdminPanel();
+                } else {
+                    grecaptcha.reset();
+                    document.getElementById('loginError').classList.add('show');
+                    setTimeout(() => {
+                        document.getElementById('loginError').classList.remove('show');
+                    }, 3000);
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                grecaptcha.reset();
+                document.getElementById('loginError').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('loginError').classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Show login page
+        function showLoginPage() {
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('adminPanel').classList.remove('active');
+        }
+
+        // Show admin panel
+        function showAdminPanel() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('adminPanel').classList.add('active');
+            loadTheme();
+            loadOrders();
+            loadProducts();
+            loadStorageInfo();
+            startActivityTracking();
+        }
+
+        // Logout function - Now invalidates token on server
+        async function logout() {
+            try {
+                await fetch('/api/admin/logout', {
+                    method: 'POST',
+                    headers: { 'X-Admin-Token': adminToken }
+                });
+            } catch (e) {}
+            adminToken = null;
+            sessionStorage.removeItem('adminToken');
+            window.location.reload();
+        }
+
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('adminTheme', next);
+        }
+
+        function loadTheme() {
+            const saved = localStorage.getItem('adminTheme') || 'light';
+            document.documentElement.setAttribute('data-theme', saved);
+        }
+
+        // Tab switching
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.main-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(tab + 'Tab').classList.add('active');
+            
+            // Find and activate the correct button
+            document.querySelectorAll('.main-tabs .tab-btn').forEach(btn => {
+                const text = btn.textContent;
+                if ((tab === 'orders' && text.includes('الطلبات')) ||
+                    (tab === 'leads' && text.includes('العملاء المحتملون')) ||
+                    (tab === 'products' && text.includes('المنتجات'))) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            if (tab === 'products') {
+                loadProducts();
+            } else if (tab === 'leads') {
+                loadLeads();
+            }
+        }
+
+        // Filter orders
+        function filterOrders(status) {
+            currentFilter = status;
+            document.querySelectorAll('.order-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            renderOrders();
+        }
+
+        // Load storage info
+        async function loadStorageInfo() {
+            try {
+                const response = await fetch('/api/admin/storage', {
+                    headers: { 'X-Admin-Token': adminToken }
+                });
+                const data = await response.json();
+                
+                document.getElementById('storageUsed').textContent = data.usedMB.toFixed(2) + ' MB';
+                document.getElementById('storageFree').textContent = data.freeMB.toFixed(2) + ' MB';
+                document.getElementById('storagePercent').textContent = data.percentage.toFixed(1) + '%';
+                document.getElementById('storageUsedBar').style.width = data.percentage + '%';
+                
+                // Change color based on usage
+                const bar = document.getElementById('storageUsedBar');
+                if (data.percentage > 80) {
+                    bar.style.background = 'linear-gradient(90deg, #e74c3c, #c0392b)';
+                } else if (data.percentage > 60) {
+                    bar.style.background = 'linear-gradient(90deg, #f39c12, #e67e22)';
+                } else {
+                    bar.style.background = 'linear-gradient(90deg, var(--primary), var(--secondary))';
+                }
+            } catch (error) {
+                console.error('Error loading storage info:', error);
+            }
+        }
+
+        // Cleanup old orders
+        async function cleanupOldOrders() {
+            if (!confirm('هل تريد حذف الطلبات القديمة (أكثر من شهر)؟')) return;
+            
+            try {
+                const response = await fetch('/api/admin/cleanup-orders', { 
+                    method: 'DELETE',
+                    headers: { 'X-Admin-Token': adminToken }
+                });
+                const data = await response.json();
+                
+                if (data.success) {
+                    showToast(`تم حذف ${data.deletedCount} طلب قديم`, 'success');
+                    loadOrders();
+                    loadStorageInfo();
+                } else {
+                    showToast('خطأ في الحذف', 'error');
+                }
+            } catch (error) {
+                showToast('خطأ في الاتصال', 'error');
+            }
+        }
+
+        // Load orders
+        async function loadOrders() {
+            try {
+                const response = await fetch('/api/orders', {
+                    headers: { 'X-Admin-Token': adminToken }
+                });
+                orders = await response.json();
+                updateStats();
+                renderOrders();
+            } catch (error) {
+                showToast('خطأ في تحميل الطلبات', 'error');
+            }
+        }
+
+        // Load leads
+        async function loadLeads() {
+            try {
+                const response = await fetch('/api/leads', {
+                    headers: { 'X-Admin-Token': adminToken }
+                });
+                const leads = await response.json();
+                renderLeads(leads);
+            } catch (error) {
+                showToast('خطأ في تحميل العملاء', 'error');
+            }
+        }
+
+        // Convert lead to order
+        async function convertLeadToOrder(leadId) {
+            if (!confirm('هل تريد قبول هذا العميل وتحويله إلى طلب؟')) return;
+            
+            try {
+                const response = await fetch(`/api/leads/${leadId}/convert`, {
+                    method: 'POST',
+                    headers: { 'X-Admin-Token': adminToken }
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showToast('تم تحويل العميل إلى طلب بنجاح', 'success');
+                    // Reload leads and orders
+                    await loadLeads();
+                    await loadOrders();
+                    // Switch to orders tab
+                    switchTab('orders');
+                } else {
+                    showToast(result.error || 'فشل تحويل العميل', 'error');
+                }
+            } catch (error) {
+                console.error('Error converting lead:', error);
+                showToast('خطأ في تحويل العميل', 'error');
+            }
+        }
+
+        // Delete lead
+        async function deleteLead(leadId) {
+            if (!confirm('هل تريد حذف هذا العميل؟')) return;
+            
+            try {
+                const response = await fetch(`/api/leads/${leadId}`, {
+                    method: 'DELETE',
+                    headers: { 'X-Admin-Token': adminToken }
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showToast('تم حذف العميل بنجاح', 'success');
+                    await loadLeads();
+                } else {
+                    showToast(result.error || 'فشل حذف العميل', 'error');
+                }
+            } catch (error) {
+                console.error('Error deleting lead:', error);
+                showToast('خطأ في حذف العميل', 'error');
+            }
+        }
+
+        // Render leads
+        function renderLeads(leads) {
+            const container = document.getElementById('leadsList');
+            const countEl = document.getElementById('totalLeadsCount');
+            
+            if (countEl) countEl.textContent = leads.length;
+
+            if (!leads || leads.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-orders">
+                        <i class="fas fa-inbox"></i>
+                        <p>لا توجد عملاء محتملون</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = leads.map(lead => {
+                const date = new Date(lead.lastUpdated);
+                return `
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div>
+                                <span class="order-id">${lead.leadId}</span>
+                                <span class="status-badge status-${lead.status}">${
+                                    lead.status === 'partial' ? 'جزئي' : 
+                                    lead.status === 'completed' ? 'مكتمل' : 'محول'
+                                }</span>
+                            </div>
+                            <span class="order-date">${date.toLocaleDateString('ar-DZ')}</span>
+                        </div>
+                        <div class="order-customer">
+                            <p><i class="fas fa-user"></i> ${lead.customer.firstName || ''} ${lead.customer.lastName || ''}</p>
+                            <p><i class="fas fa-phone"></i> ${lead.customer.phone || 'غير محدد'}</p>
+                            <p><i class="fas fa-map-marker-alt"></i> ${lead.customer.wilaya || 'غير محدد'}${lead.customer.baladiya ? ' - ' + lead.customer.baladiya : ''}</p>
+                        </div>
+                        <div class="order-footer" style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="order-time">${date.toLocaleTimeString('ar-DZ')}</span>
+                            <div style="display: flex; gap: 8px;">
+                                <button onclick="convertLeadToOrder('${lead.leadId}')" class="status-btn" style="background: #28a745; padding: 8px 16px; border-radius: 8px; border: none; color: white; cursor: pointer; font-weight: 600;">
+                                    <i class="fas fa-check"></i> قبول
+                                </button>
+                                <button onclick="deleteLead('${lead.leadId}')" class="status-btn" style="background: #dc3545; padding: 8px 16px; border-radius: 8px; border: none; color: white; cursor: pointer; font-weight: 600;">
+                                    <i class="fas fa-times"></i> رفض
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Update stats
+        function updateStats() {
+            const stats = {
+                total: orders.length,
+                pending: orders.filter(o => o.status === 'pending' || o.status === 'new').length,
+                accepted: orders.filter(o => o.status === 'accepted').length,
+                shipped: orders.filter(o => o.status === 'shipped').length,
+                delivered: orders.filter(o => o.status === 'delivered').length,
+                revenue: orders.filter(o => o.status === 'delivered').reduce((sum, o) => sum + (o.totalPrice || o.total || 0), 0)
+            };
+
+            document.getElementById('totalOrders').textContent = stats.total;
+            document.getElementById('pendingOrders').textContent = stats.pending;
+            document.getElementById('confirmedOrders').textContent = stats.accepted;
+            document.getElementById('shippedOrders').textContent = stats.shipped;
+            document.getElementById('deliveredOrders').textContent = stats.delivered;
+            document.getElementById('totalRevenue').textContent = stats.revenue.toLocaleString();
+            document.getElementById('totalOrdersCount').textContent = stats.total;
+        }
+
+        // Render orders
+        function renderOrders() {
+            const container = document.getElementById('ordersList');
+            let filtered = orders;
+
+            if (currentFilter !== 'all') {
+                if (currentFilter === 'pending') {
+                    filtered = orders.filter(o => o.status === 'pending' || o.status === 'new');
+                } else if (currentFilter === 'accepted') {
+                    filtered = orders.filter(o => o.status === 'accepted');
+                } else if (currentFilter === 'rejected') {
+                    filtered = orders.filter(o => o.status === 'rejected' || o.status === 'cancelled');
+                } else {
+                    filtered = orders.filter(o => o.status === currentFilter);
+                }
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-orders">
+                        <i class="fas fa-inbox"></i>
+                        <p>لا توجد طلبات</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(order => `
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <div class="order-id">#${order.id}</div>
+                            <div class="order-date">${new Date(order.date).toLocaleString('ar-DZ')}</div>
+                        </div>
+                        <span class="order-status status-${order.status}">
+                            ${getStatusText(order.status)}
+                        </span>
+                    </div>
+                    <div class="customer-info">
+                        <div><i class="fas fa-user"></i> ${order.customer.firstName} ${order.customer.lastName}</div>
+                        <div><i class="fas fa-phone"></i> ${order.customer.phone}</div>
+                        <div><i class="fas fa-envelope"></i> ${order.customer.email}</div>
+                        <div><i class="fas fa-map-marker-alt"></i> ${order.customer.wilaya || 'غير محدد'}${(order.customer.baladiya && order.customer.baladiya.trim()) ? ' - ' + order.customer.baladiya : ' - غير محدد'}</div>
+                    </div>
+                    <div class="customer-info" style="background: #e3f2fd; border-right: 4px solid #2196F3; margin-top: 10px; padding: 12px;">
+                        <div style="font-weight: bold; color: #1976D2; font-size: 15px;"><i class="fas fa-shipping-fast"></i> طريقة التوصيل: ${order.deliveryOption === 'stopdoor' ? 'استلام من المكتب (Stop Door)' : order.deliveryOption === 'stopdesk' ? 'توصيل للمنزل (Stop Desk)' : 'توصيل للمنزل (Stop Desk)'}</div>
+                        <div style="font-weight: bold; color: #1565C0; font-size: 15px;"><i class="fas fa-money-bill-wave"></i> رسوم التوصيل: ${(order.deliveryFee || 0).toLocaleString()} د.ج</div>
+                    </div>
+                    <div class="order-products">
+                        <h4><i class="fas fa-shopping-bag"></i> المنتجات:</h4>
+                        ${order.items.map(item => `${item.name} × ${item.quantity}`).join(' | ')}
+                    </div>
+                    <div class="order-total">
+                        ${order.deliveryFee && order.deliveryFee > 0 ? 
+                            `المنتجات: ${((order.totalPrice || 0) - (order.deliveryFee || 0)).toLocaleString()} د.ج + التوصيل: ${(order.deliveryFee || 0).toLocaleString()} د.ج = ` : ''}
+                        المجموع: ${(order.totalPrice || order.total || 0).toLocaleString()} د.ج
+                    </div>
+                    <div class="order-actions">
+                        ${getActionButtons(order)}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getStatusText(status) {
+            const texts = {
+                new: 'جديد',
+                pending: 'في الانتظار',
+                accepted: 'مقبول',
+                confirmed: 'مؤكد',
+                shipped: 'في الطريق',
+                delivered: 'تم التسليم',
+                rejected: 'مرفوض',
+                cancelled: 'ملغاة'
+            };
+            return texts[status] || status;
+        }
+
+        function getActionButtons(order) {
+            let buttons = '';
+            
+            if (order.status === 'new' || order.status === 'pending') {
+                buttons += `<button class="action-btn btn-confirm" onclick="updateStatus(${order.id}, 'accepted')"><i class="fas fa-check"></i> قبول</button>`;
+                buttons += `<button class="action-btn btn-cancel" onclick="updateStatus(${order.id}, 'rejected')"><i class="fas fa-times"></i> رفض</button>`;
+            } else if (order.status === 'accepted') {
+                buttons += `<button class="action-btn btn-ship" onclick="updateStatus(${order.id}, 'shipped')"><i class="fas fa-truck"></i> شحن</button>`;
+            } else if (order.status === 'shipped') {
+                buttons += `<button class="action-btn btn-deliver" onclick="updateStatus(${order.id}, 'delivered')"><i class="fas fa-box"></i> تم التسليم</button>`;
+            }
+            
+            buttons += `<button class="action-btn btn-delete" onclick="deleteOrder(${order.id})"><i class="fas fa-trash"></i> حذف</button>`;
+            
+            return buttons;
+        }
+
+        // Update order status
+        async function updateStatus(orderId, status) {
+            try {
+                const response = await fetch(`/api/orders/${orderId}/status`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Admin-Token': adminToken
+                    },
+                    body: JSON.stringify({ status })
+                });
+
+                if (response.ok) {
+                    showToast('تم تحديث حالة الطلب', 'success');
+                    loadOrders();
+                }
+            } catch (error) {
+                showToast('خطأ في تحديث الطلب', 'error');
+            }
+        }
+
+        // Delete order
+        async function deleteOrder(orderId) {
+            if (!confirm('هل أنت متأكد من حذف هذا الطلب؟')) return;
+
+            try {
+                const response = await fetch(`/api/orders/${orderId}`, {
+                    method: 'DELETE',
+                    headers: { 'X-Admin-Token': adminToken }
+                });
+
+                if (response.ok) {
+                    showToast('تم حذف الطلب', 'success');
+                    loadOrders();
+                }
+            } catch (error) {
+                showToast('خطأ في حذف الطلب', 'error');
+            }
+        }
+
+        // Products functions
+        async function loadProducts() {
+            try {
+                const response = await fetch('/api/products');
+                products = await response.json();
+                renderProducts();
+            } catch (error) {
+                showToast('خطأ في تحميل المنتجات', 'error');
+            }
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('productsGrid');
+            container.innerHTML = products.map(product => `
+                <div class="product-card-admin">
+                    <img src="${product.image || 'https://via.placeholder.com/300x200/2e8b57/ffffff?text=منتج'}" alt="${product.name}">
+                    <div class="content">
+                        <h3>${product.name}</h3>
+                        <div class="price">${product.price.toLocaleString()} د.ج</div>
+                        <div class="actions">
+                            <button class="edit-btn" onclick="editProduct(${product.id})">
+                                <i class="fas fa-edit"></i> تعديل
+                            </button>
+                            <button class="link-btn" onclick="copyAdminProductLink(${product.id})">
+                                <i class="fas fa-link"></i> رابط
+                            </button>
+                            <button class="delete-btn" onclick="deleteProduct(${product.id})">
+                                <i class="fas fa-trash"></i> حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function copyAdminProductLink(productId) {
+            const url = `${window.location.origin}/product.html?id=${productId}`;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url)
+                    .then(() => showToast('تم نسخ رابط المنتج', 'success'))
+                    .catch(() => fallbackCopy(url));
+            } else {
+                fallbackCopy(url);
+            }
+
+            function fallbackCopy(text) {
+                const temp = document.createElement('input');
+                temp.value = text;
+                document.body.appendChild(temp);
+                temp.select();
+                try {
+                    document.execCommand('copy');
+                    showToast('تم نسخ رابط المنتج', 'success');
+                } catch (e) {
+                    showToast('تعذر نسخ الرابط', 'error');
+                }
+                document.body.removeChild(temp);
+            }
+        }
+
+        function toggleWeightFields() {
+            const isWeighted = document.getElementById('productIsWeighted').checked;
+            document.getElementById('weightFields').style.display = isWeighted ? 'block' : 'none';
+        }
+
+        function openProductModal() {
+            editingProductId = null;
+            document.getElementById('modalTitle').textContent = 'إضافة منتج';
+            document.getElementById('productForm').reset();
+            document.getElementById('imagePreview').innerHTML = '<span>معاينة الصورة</span>';
+            document.getElementById('productOldPrice').value = '';
+            document.getElementById('productBadge').value = '';
+            document.getElementById('productBackgroundImage').value = '';
+            document.getElementById('backgroundImagePreview').innerHTML = '<span>معاينة صورة الخلفية</span>';
+            window.currentBackgroundImage = '';
+            document.getElementById('productIsWeighted').checked = false;
+            document.getElementById('productPricePerKg').value = '';
+            document.getElementById('productRecommendedWeights').value = '';
+            toggleWeightFields();
+            document.getElementById('productModal').classList.add('active');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.remove('active');
+        }
+
+        function editProduct(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            editingProductId = id;
+            document.getElementById('modalTitle').textContent = 'تعديل المنتج';
+            document.getElementById('productId').value = id;
+            document.getElementById('productName').value = product.name;
+            document.getElementById('productPrice').value = product.price;
+            document.getElementById('productOldPrice').value = product.oldPrice || '';
+            document.getElementById('productBadge').value = product.badge || '';
+            document.getElementById('productIsWeighted').checked = product.isWeighted || false;
+            
+            document.getElementById('productBackgroundImage').value = '';
+            if (product.backgroundImage) {
+                document.getElementById('backgroundImagePreview').innerHTML = `<img src="${product.backgroundImage}" alt="Bg Preview" style="max-width: 100%;">`;
+                window.currentBackgroundImage = product.backgroundImage;
+            } else {
+                document.getElementById('backgroundImagePreview').innerHTML = '<span>معاينة صورة الخلفية</span>';
+                window.currentBackgroundImage = '';
+            }
+            document.getElementById('productPricePerKg').value = product.pricePerKg || '';
+            document.getElementById('productRecommendedWeights').value = (product.recommendedWeights || []).join(', ');
+            document.getElementById('productDescription').value = product.description || '';
+            toggleWeightFields();
+            
+            if (product.image) {
+                document.getElementById('imagePreview').innerHTML = `<img src="${product.image}" alt="Preview">`;
+            }
+            
+            document.getElementById('productModal').classList.add('active');
+        }
+
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('imagePreview').innerHTML = `<img src="${e.target.result}" alt="Preview" style="max-width: 100%;">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function previewBackgroundImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('backgroundImagePreview').innerHTML = `<img src="${e.target.result}" alt="Bg Preview" style="max-width: 100%;">`;
+                    window.currentBackgroundImage = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function clearBackgroundImage() {
+            document.getElementById('productBackgroundImage').value = '';
+            document.getElementById('backgroundImagePreview').innerHTML = '<span>معاينة صورة الخلفية</span>';
+            window.currentBackgroundImage = '';
+        }
+
+        // ------------------------------------------------------------
+        // FIXED: saveProduct with Cloudinary direct upload (unsigned)
+        // ------------------------------------------------------------
+        async function saveProduct(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('productName').value;
+            const price = document.getElementById('productPrice').value;
+            const oldPrice = document.getElementById('productOldPrice').value;
+            const badge = document.getElementById('productBadge').value;
+            const isWeighted = document.getElementById('productIsWeighted').checked;
+            const pricePerKg = document.getElementById('productPricePerKg').value;
+            const recommendedWeightsStr = document.getElementById('productRecommendedWeights').value;
+            const description = document.getElementById('productDescription').value;
+            
+            const recommendedWeights = recommendedWeightsStr
+                .split(',')
+                .map(w => parseFloat(w.trim()))
+                .filter(w => !isNaN(w) && w > 0);
+            
+            // --- Upload main image to Cloudinary (if selected) ---
+            let imageUrl = '';
+            const imageFile = document.getElementById('productImage').files[0];
+            if (imageFile) {
+                const formData = new FormData();
+                formData.append('file', imageFile);
+                // Replace 'bionobel_products' with your unsigned upload preset name
+                formData.append('upload_preset', 'ml_default');
+                // Replace 'bionobel' with your cloud name (e.g., 'bionobel')
+                const cloudName = 'bionobel'; 
+                const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                if (!data.secure_url) {
+                    showToast('فشل رفع الصورة', 'error');
+                    return;
+                }
+                imageUrl = data.secure_url;
+            }
+
+            // --- Upload background image to Cloudinary (if selected) ---
+            let bgUrl = '';
+            const bgFile = document.getElementById('productBackgroundImage').files[0];
+            if (bgFile) {
+                const formData = new FormData();
+                formData.append('file', bgFile);
+                formData.append('upload_preset', 'bionobel_products');
+                const cloudName = 'bionobel';
+                const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                if (data.secure_url) bgUrl = data.secure_url;
+            }
+            // If no new background image uploaded, keep existing (if any)
+            if (!bgUrl && window.currentBackgroundImage) {
+                bgUrl = window.currentBackgroundImage;
+            }
+
+            const productData = {
+                nameAr: name,
+                price: price,
+                oldPrice: oldPrice || null,
+                badge: badge || '',
+                backgroundImage: bgUrl || '',
+                isWeighted: isWeighted,
+                pricePerKg: parseFloat(pricePerKg) || 0,
+                recommendedWeights: recommendedWeights,
+                descriptionAr: description,
+                image: imageUrl
+            };
+
+            try {
+                let url, method;
+                if (editingProductId) {
+                    url = `/api/products/${editingProductId}`;
+                    method = 'PUT';
+                } else {
+                    url = '/api/products/add';
+                    method = 'POST';
+                }
+                
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Admin-Token': adminToken
+                    },
+                    body: JSON.stringify(productData)
+                });
+
+                if (response.ok) {
+                    showToast(editingProductId ? 'تم تحديث المنتج' : 'تم إضافة المنتج', 'success');
+                    closeProductModal();
+                    loadProducts();
+                } else {
+                    showToast('خطأ في حفظ المنتج', 'error');
+                }
+            } catch (error) {
+                showToast('خطأ في حفظ المنتج', 'error');
+            }
+        }
+
+        async function deleteProduct(id) {
+            if (!confirm('هل أنت متأكد من حذف هذا المنتج؟')) return;
+
+            try {
+                const response = await fetch(`/api/products/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'X-Admin-Token': adminToken }
+                });
+
+                if (response.ok) {
+                    showToast('تم حذف المنتج', 'success');
+                    loadProducts();
+                }
+            } catch (error) {
+                showToast('خطأ في حذف المنتج', 'error');
+            }
+        }
+
+        // Toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const icon = toast.querySelector('i');
+            document.getElementById('toastMessage').textContent = message;
+            
+            toast.className = `toast ${type}`;
+            icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Activity tracking for active admins
+        let activityInterval;
+        
+        function startActivityTracking() {
+            const sessionId = 'admin_' + Date.now() + '_' + Math.random();
+            
+            function updateActivity() {
+                const now = Date.now();
+                const activeAdmins = JSON.parse(localStorage.getItem('activeAdmins') || '{}');
+                activeAdmins[sessionId] = now;
+                
+                Object.keys(activeAdmins).forEach(id => {
+                    if (now - activeAdmins[id] > 30000) {
+                        delete activeAdmins[id];
+                    }
+                });
+                
+                localStorage.setItem('activeAdmins', JSON.stringify(activeAdmins));
+                
+                const count = Object.keys(activeAdmins).length;
+                document.getElementById('activeAdmins').textContent = count;
+            }
+            
+            updateActivity();
+            activityInterval = setInterval(updateActivity, 5000);
+            
+            window.addEventListener('beforeunload', () => {
+                const activeAdmins = JSON.parse(localStorage.getItem('activeAdmins') || '{}');
+                delete activeAdmins[sessionId];
+                localStorage.setItem('activeAdmins', JSON.stringify(activeAdmins));
+            });
+        }
+    </script>
+</body>
+</html>

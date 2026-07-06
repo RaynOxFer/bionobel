@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bionobel | البديل الصحي للتوابل والأدوية الطبيعية</title>
+    <meta name="description" content="Bionobel - البديل الصحي لبيع التوابل والأدوية الطبيعية - توصيل لجميع ولايات الجزائر - الدفع عند الاستلام">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6373450778872852"
+     crossorigin="anonymous"></script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '819694071114025');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=819694071114025&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- TikTok Pixel Code -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=i+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+      ttq.load('D616CPBC77U70QB7BFIG');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- End TikTok Pixel Code -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="marquee">
+            <span>🌿 توابل وأدوية طبيعية 100% | توصيل لجميع الولايات 🚚 | الدفع عند الاستلام 💰 | اتصل بنا: 0550140140 📞 | منتجات عضوية معتمدة ✅</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="logo.jpg" alt="Bionobel Logo" class="logo-img">
+                <div class="logo-text-wrap">
+                    <span class="logo-name">Bio<span>Nobel</span></span>
+                    <span class="logo-sub">البديل الصحي للتوابل والأدوية الطبيعية</span>
+                </div>
+            </a>
+
+            <nav class="nav">
+                <a href="#products">منتجاتنا</a>
+                <a href="#features">مميزاتنا</a>
+                <a href="#trackOrder">تتبع طلبك</a>
+                <a href="#contact">تواصل معنا</a>
+            </nav>
+
+            <div class="header-actions">
+                <div class="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع">
+                    <div class="theme-toggle-ball">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="ابحث عن منتج..." id="searchInput" onkeyup="searchProducts()">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#products" onclick="toggleMobileMenu()">منتجاتنا</a>
+        <a href="#features" onclick="toggleMobileMenu()">مميزاتنا</a>
+        <a href="#trackOrder" onclick="toggleMobileMenu()">تتبع طلبك</a>
+        <a href="#contact" onclick="toggleMobileMenu()">اتصل بنا</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-leaf"></i>
+                البديل الصحي الطبيعي
+            </div>
+            <h1>Bio<span class="gold">Nobel</span></h1>
+            <p>البديل الصحي لبيع التوابل والأدوية الطبيعية — منتجات عضوية 100% — توصيل سريع لجميع ولايات الجزائر</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-gold">
+                    <i class="fas fa-shopping-bag"></i>
+                    تسوق الآن
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61578299254849" target="_blank" class="btn btn-outline">
+                    <i class="fab fa-facebook"></i>
+                    صفحتنا
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">+1000</span>
+                    <span class="stat-label">عميل سعيد</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">69</span>
+                    <span class="stat-label">ولاية</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">طبيعي</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Bar -->
+    <section class="features-bar" id="features">
+        <div class="container">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>تخلص كي توصلك</h4>
+                    <p>إشتري بكل ثقة وأمان</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>توصيل سريع</h4>
+                    <p>لجميع الولايات</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>منتجات طبيعية</h4>
+                    <p>100% عضوية وطبيعية</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>جودة مضمونة</h4>
+                    <p>منتجات معتمدة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="leaf-icon"><i class="fas fa-leaf"></i></span>
+                    منتجاتنا الطبيعية
+                </h2>
+                <p class="section-subtitle">اكتشف منتجاتنا العضوية والطبيعية للصحة والجمال</p>
+            </div>
+            <div id="productsLoading" style="text-align: center; padding: 40px; font-weight: bold;">جاري تحميل المنتجات...</div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="leaf-icon"><i class="fas fa-star"></i></span>
+                    لماذا بيونوبال؟
+                </h2>
+            </div>
+            <div class="why-us-grid">
+                <div class="why-us-card">
+                    <div class="why-us-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>منتجات طبيعية</h3>
+                    <p>جميع منتجاتنا عضوية وطبيعية 100%</p>
+                </div>
+                <div class="why-us-card">
+                    <div class="why-us-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3>أسعار مناسبة</h3>
+                    <p>أفضل جودة بأفضل الأسعار</p>
+                </div>
+                <div class="why-us-card">
+                    <div class="why-us-icon"><i class="fas fa-truck"></i></div>
+                    <h3>توصيل لكل الجزائر</h3>
+                    <p>نوصل لجميع ولايات الجزائر الـ 69</p>
+                </div>
+                <div class="why-us-card">
+                    <div class="why-us-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>ضمان الجودة</h3>
+                    <p>منتجات معتمدة وآمنة للاستخدام</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="leaf-icon"><i class="fas fa-phone-alt"></i></span>
+                    معلومات إضافية
+                </h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fab fa-facebook"></i>
+                    <h4>فيسبوك</h4>
+                    <p><a href="https://www.facebook.com/profile.php?id=61578299254849" target="_blank" style="color: var(--green-deep);">bionobel</a></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-truck"></i>
+                    <h4>التوصيل</h4>
+                    <p>جميع ولايات الجزائر</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>العنوان</h4>
+                    <p>درارية، الجزائر</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h4>الدفع</h4>
+                    <p>عند الاستلام</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Order Section -->
+    <section class="track-order-section" id="trackOrder">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="leaf-icon"><i class="fas fa-search-location"></i></span>
+                    تتبع طلبك
+                </h2>
+                <p class="section-subtitle">أدخل رقم طلبك لمعرفة حالته</p>
+            </div>
+            <div class="track-order-box">
+                <div class="track-input-group">
+                    <input type="text" id="trackOrderId" placeholder="أدخل رقم الطلب..." class="track-input">
+                    <button onclick="trackOrder()" class="track-btn">
+                        <i class="fas fa-search"></i>
+                        تتبع
+                    </button>
+                </div>
+                <div id="trackResult" class="track-result" style="display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> سلة التسوق</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>المجموع:</span>
+                <span id="cartTotal">0 د.ج</span>
+            </div>
+            <button class="btn btn-primary btn-checkout" onclick="openCheckout()" id="checkoutBtn" disabled>
+                <i class="fas fa-check-circle"></i>
+                إتمام الطلب
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-clipboard-list"></i> إتمام الطلب</h3>
+                <button class="close-modal" onclick="closeCheckout()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h4><i class="fas fa-shopping-bag"></i> ملخص الطلب</h4>
+                    <div id="checkoutItems"></div>
+                    <div class="order-summary-line" id="deliveryFeeLine" style="display:none;">
+                        <span><i class="fas fa-truck"></i> رسوم التوصيل:</span>
+                        <span id="deliveryFeeAmount">0 د.ج</span>
+                    </div>
+                    <div class="checkout-total">
+                        <strong>المجموع الكلي:</strong>
+                        <span id="checkoutTotal">0 د.ج</span>
+                    </div>
+                </div>
+
+                <!-- Customer Form -->
+                <form id="checkoutForm" onsubmit="submitOrder(event)">
+                    <h4><i class="fas fa-user"></i> معلوماتك الشخصية</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">الاسم *</label>
+                            <input type="text" id="firstName" name="firstName" required placeholder="محمد">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">اللقب *</label>
+                            <input type="text" id="lastName" name="lastName" required placeholder="أحمد">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="07XX XX XX XX">
+                    </div>
+                    <div class="form-group">
+                        <label for="wilaya">الولاية *</label>
+                        <select id="wilaya" name="wilaya" required>
+                            <option value="">اختر الولاية</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="baladiya">البلدية *</label>
+                        <select id="baladiya" name="baladiya" required disabled>
+                            <option value="">اختر الولاية أولاً</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="customBaladiyaGroup" style="display: none;">
+                        <label for="customBaladiya">اكتب اسم البلدية:</label>
+                        <input type="text" id="customBaladiya" name="customBaladiya" placeholder="اكتب اسم البلدية">
+                    </div>
+
+                    <div class="form-group">
+                        <label>خيارات التوصيل *</label>
+                        <div class="delivery-options">
+                            <label class="delivery-option">
+                                <input type="radio" name="deliveryOption" value="stopdesk" checked>
+                                <div class="delivery-option-content">
+                                    <div class="delivery-option-title">
+                                        <i class="fas fa-home"></i>
+                                        <span>التوصيل إلى المنزل</span>
+                                    </div>
+                                    <div class="delivery-option-price" id="stopdeskPrice">--</div>
+                                </div>
+                            </label>
+                            <label class="delivery-option">
+                                <input type="radio" name="deliveryOption" value="stopdoor">
+                                <div class="delivery-option-content">
+                                    <div class="delivery-option-title">
+                                        <i class="fas fa-building"></i>
+                                        <span>الاستلام من المكتب</span>
+                                    </div>
+                                    <div class="delivery-option-price" id="stopdoorPrice">--</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="payment-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span>الدفع عند الاستلام — ستدفع عند وصول طلبك</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        تأكيد الطلب
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal success-modal">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>تم الطلب بنجاح! 🎉</h2>
+            <p>شكراً لك على طلبك. سنتواصل معك قريباً لتأكيد الطلب.</p>
+            <p class="order-id">رقم الطلب: <span id="orderId"></span></p>
+            <button class="btn btn-primary" onclick="closeSuccessModal()">
+                <i class="fas fa-shopping-bag"></i>
+                متابعة التسوق
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal product-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-eye"></i> تفاصيل المنتج</h3>
+                <button class="close-modal" onclick="closeProductModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="product-modal-content">
+                <div class="product-modal-image">
+                    <img id="modalProductImage" src="" alt="">
+                </div>
+                <div class="product-modal-info">
+                    <h2 id="modalProductName"></h2>
+                    <p class="modal-price" id="modalProductPrice"></p>
+                    <p class="modal-description" id="modalProductDescription"></p>
+
+                    <div id="modalWeightSelector" style="display:none;">
+                        <h4 style="font-size:14px; color: var(--text-secondary); margin-bottom:10px;">اختر الوزن:</h4>
+                        <div id="modalWeightButtons" style="display: flex; flex-wrap: wrap;"></div>
+                        <div id="modalCustomWeightGroup" style="display: none; margin-top: 10px;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="number" id="modalCustomWeight" min="50" placeholder="أدخل الوزن بالغرام"
+                                    style="flex: 1; padding: 10px; border-radius: 8px; border: 1.5px solid var(--border-color); background: var(--bg-input); font-family: 'Cairo', sans-serif; color: var(--text-primary); outline: none;">
+                                <span style="font-weight: bold;">غرام</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quantity-selector" id="modalQuantitySelector">
+                        <button onclick="decreaseModalQuantity()">-</button>
+                        <input type="number" id="modalQuantity" value="1" min="1">
+                        <button onclick="increaseModalQuantity()">+</button>
+                    </div>
+
+                    <button class="btn-add-cart" onclick="addToCartFromModal()">
+                        <i class="fas fa-cart-plus"></i> أضف إلى السلة
+                    </button>
+                    <button class="btn-buy-now" onclick="buyNowFromModal()">
+                        <i class="fas fa-bolt"></i> شراء الآن
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="logo.jpg" alt="Bionobel">
+                        <span class="footer-logo-name">BioNobel</span>
+                    </div>
+                    <p class="footer-tagline">البديل الصحي لبيع التوابل والأدوية الطبيعية</p>
+                    <p>متجرك الأول للتوابل والأدوية الطبيعية. نوفر لك أفضل المنتجات العضوية بأسعار منافسة وتوصيل سريع لجميع ولايات الجزائر.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61578299254849" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/bio_nobel/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@bio_nobel" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>عن المتجر</h4>
+                    <ul>
+                        <li><a href="/about.html">من نحن؟</a></li>
+                        <li><a href="/payment.html">طرق الدفع</a></li>
+                        <li><a href="/payment.html">الشحن والتسليم</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>منتجاتنا</h4>
+                    <ul>
+                        <li><a href="#products">توابل طبيعية</a></li>
+                        <li><a href="#products">أدوية عشبية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <p><i class="fas fa-phone"></i> <a href="tel:0550140140">0550140140</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> درارية، الجزائر</p>
+                    <p><i class="fas fa-truck"></i> توصيل لجميع الولايات</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Bionobel — البديل الصحي. جميع الحقوق محفوظة 🌿🇩🇿</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/213550140140" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="algeria-data.js"></script>
+    <script src="delivery-prices.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
